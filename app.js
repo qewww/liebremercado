@@ -1,12 +1,20 @@
-const { Console } = require("console");
-const express = require( "express");
+const express = require('express');
 const app = express();
-app.get("/",(req , res)=>{
-    res.sendFile(__dirname + "/views/index.html")
+app.use(express.static('public'));
+
+
+app.listen(process.env.PORT || 3000, ()=>{
+    console.log('Servidor funcionando');
 });
 
-app.listen(3000, ()=>{
-    console.log("Servidor funcionando 3000");
-    console.log(__dirname)
-    console.log("---")
+app.get('/', (req,res)=>{
+    res.sendFile(__dirname + '/views/home.html');
+});
+
+app.get('/login', (req,res)=>{
+    res.sendFile(__dirname + '/views/login.html');
+});
+
+app.get('/register', (req,res)=>{
+    res.sendFile(__dirname + '/views/register.html');
 });
