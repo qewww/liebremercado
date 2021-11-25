@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express();
 
-app.set("view engine","ejs");
-
+const path = require("path");
+app.use(express.static("public"));
 
 app.listen(3000, ()=>{
     console.log('Servidor funcionando');
 });
 
 app.get('/', (req,res)=>{
-    res.sendFile(__dirname + '/views/home.html');
+    res.sendFile(__dirname + '/views/index.html');
 });
 
 app.get('/login', (req,res)=>{
